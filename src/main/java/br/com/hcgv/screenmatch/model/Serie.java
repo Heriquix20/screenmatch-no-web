@@ -1,18 +1,39 @@
 package br.com.hcgv.screenmatch.model;
 
+import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.OptionalDouble;
 
+@Entity     // SINALIZANDO QUE É UMA ENTIDADE DA TABELA
+@Table(name = "series")  // MUDADNDO O NOME DA TABELA
 public class Serie {
+   // @Column(name = "nomeDaSerie")  // MUDAR O NOME DOS ATRIBUTOS
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  // GERANDO O ID
+    private long id;
+
+    @Column(unique = true)  // INDICANDO QUE NAO PODE REPETIR A MESMA SERIE
     private String titulo;
+
     private Integer totalTemporadas;
     private Double avaliacao;
     private String ano;
     private String atores;
     private String urlPoster;
+
+    @Enumerated(EnumType.STRING)  // INDICANDO O TIPO DO ENUM NA TABELA
     private Categoria genero;
+
     private String sinopse;
+
+    @Transient  // TRANSIENT PARA IGNORAR ATRIBUTO
+    private List<Episodio> episodios = new ArrayList<>();
+
+    // CONSTRUTOR PADRAO
+    public Serie(){}
 
     // CONTRUTOR PARA TRANSFORMAR OS DADOS VINDOS DA SERIE RECORD
     public Serie(DadosSerie serieRecord) {
@@ -38,6 +59,20 @@ public class Serie {
                 " - Atores = " + atores +
                 " - Url do Poster = " + urlPoster +
                 " - Sinopse = " + sinopse ;
+    }
+
+
+    public List<Episodio> getEpisodios() {
+        return episodios;
+    }
+    public void setEpisodios(List<Episodio> episodios) {
+        this.episodios = episodios;
+    }
+    public long getId() {
+        return id;
+    }
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getTitulo() {
