@@ -8,7 +8,9 @@ import java.util.OptionalDouble;
 
 @Entity     // SINALIZANDO QUE É UMA ENTIDADE DA TABELA
 @Table(name = "series")  // MUDADNDO O NOME DA TABELA
+
 public class Serie {
+
    // @Column(name = "nomeDaSerie")  // MUDAR O NOME DOS ATRIBUTOS
 
     @Id
@@ -25,15 +27,21 @@ public class Serie {
     private String urlPoster;
 
     @Enumerated(EnumType.STRING)  // INDICANDO O TIPO DO ENUM NA TABELA
-    private Categoria genero;
 
+    private Categoria genero;
     private String sinopse;
 
-    @Transient  // TRANSIENT PARA IGNORAR ATRIBUTO
+    //@Transient  // TRANSIENT PARA IGNORAR ATRIBUTO
+
+    // USAR O CASCADE PARA SALVAR A SERIE, TUDO FEITO NA SERIE MUDA NOS EPS
+    // USAR O FETCH TYPE EAGER PARA PEGAR TUDO SEM PREGUIÇA
+    @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL, fetch = FetchType.EAGER) // RELACAO DE UM PARA MUITOS E MAPEAR DE ACORDO COM O NOME
     private List<Episodio> episodios = new ArrayList<>();
+
 
     // CONSTRUTOR PADRAO
     public Serie(){}
+
 
     // CONTRUTOR PARA TRANSFORMAR OS DADOS VINDOS DA SERIE RECORD
     public Serie(DadosSerie serieRecord) {
@@ -49,23 +57,28 @@ public class Serie {
         this.sinopse = serieRecord.sinopse();
     }
 
+
     @Override
     public String toString() {
-        return  " - Gênero = " + genero +
-                " - Titulo = " + titulo +
-                " - Temporadas = " + totalTemporadas +
-                " - Avaliacao = " + avaliacao +
-                "-  Ano de Lançamento = " + ano +
-                " - Atores = " + atores +
-                " - Url do Poster = " + urlPoster +
-                " - Sinopse = " + sinopse ;
+        return  "\nGênero = " + genero +
+                "\nTitulo = " + titulo +
+                "\nTemporadas = " + totalTemporadas +
+                "\nAvaliacao = " + avaliacao +
+                "\nAno de Lançamento = " + ano +
+                "\nAtores = " + atores +
+                "\nUrl do Poster = " + urlPoster +
+                "\nSinopse = " + sinopse ;
+                //"\nEpisódios = " + episodios;
     }
 
+
+    // GETS AND SETS
 
     public List<Episodio> getEpisodios() {
         return episodios;
     }
     public void setEpisodios(List<Episodio> episodios) {
+        episodios.forEach(e -> e.setSerie(this));
         this.episodios = episodios;
     }
     public long getId() {

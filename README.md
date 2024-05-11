@@ -1,11 +1,12 @@
 <h1>ScrennMatch</h1>
+
 <br>
+<img src="src/image/catalogoFilmes.jpeg">
+<br>
+
 <h2>O que é?</h2>
-<p>Consumindo APIs de filmes e séries </p>
-<p>Manipulando o json, Lidando com streams e lambdas</p>
-<p>Interação com usuário e estatísticas</p
-                                        
-<br>
+<p>Aplicação em Java onde é possível pesquisar, filtrar séries e episódios</p>
+<p> e salvar em um banco de dados PostgreSQL</p>
 
 <h2>Tecnologias</h2>
 <div style = "display inline_block"><br/>

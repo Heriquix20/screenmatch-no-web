@@ -15,14 +15,14 @@ public record DadosSerie(@JsonAlias("Title") String titulo,
                          @JsonAlias("Plot") String sinopse) {
     @Override
     public String toString() {
-        return " - Gênero = " + genero +
-                " - Titulo = " + titulo +
-                " - Temporadas = " + totalTemporadas +
-                " - Avaliacao = " + avaliacao +
-                "-  Ano de Lançamento = " + ano +
-                " - Atores = " + atores +
-                " - Url do Poster = " + urlPoster +
-                " - Sinopse = " + sinopse ;
+        return "\n\nGênero = " + genero +
+                "\nTitulo = " + titulo +
+                "\nTemporadas = " + totalTemporadas +
+                "\nAvaliacao = " + avaliacao +
+                "\nAno de Lançamento = " + ano +
+                "\nAtores = " + atores +
+                "\nUrl do Poster = " + urlPoster +
+                "\nSinopse = " + sinopse ;
     }
 }
 
