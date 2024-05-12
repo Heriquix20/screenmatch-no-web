@@ -5,7 +5,7 @@
 <br>
 
 <h2>O que é?</h2>
-<p>Aplicação em Java onde é possível pesquisar, filtrar séries e episódios</p>
+<p>Aplicação BackEnd em Java onde é possível pesquisar, filtrar séries e episódios</p>
 <p> e salvar em um banco de dados PostgreSQL</p>
 
 <h2>Tecnologias</h2>
