@@ -3,9 +3,9 @@ package br.com.hcgv.screenmatch.model;
 public enum Categoria {
 
     // ACRECENTAR OS VALORES EM PORTUGUES E INGLES( NO CASO DA TRADUCAO)
-    ACAO("Action", "Açao"),
+    ACAO("Action", "Ação"),
     ROMANCE("Romance", "Romance"),
-    COMEDIA("Comedy", "Comedia"),
+    COMEDIA("Comedy", "Comédia"),
     DRAMA("Drama", "Drama"),
     CRIME("Crime", "Crime");
 

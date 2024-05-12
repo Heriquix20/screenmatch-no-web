@@ -13,7 +13,6 @@ public class Principal {
     private SerieRepository repositorio;
     private List<Serie> series = new ArrayList<>();
     private Optional<Serie> serieBusca;
-
     private Scanner leitura = new Scanner(System.in);
     private ConsumoApi consumo = new ConsumoApi();
     private ConverteDados conversor = new ConverteDados();
